@@ -1,5 +1,3 @@
- 
-
 
 ### Ex. No. :8 CONFIGURING ANALOG PORT TO INTEFACE AN ANALOG SENSOR AND READ THE VALUES USING SERIAL PORT
 ## Date: 
@@ -150,16 +148,67 @@ This module also includes a potentiometer that will fix the threshold value, & t
 
 
 ##  Program 
+DEVELOPED BY:ARAVIND SAMY.P
+REGISTER NO :212222230011
 
+```
+#include "main.h"
+#include"stdio.h"
+uint32_t adcvalue;
+#if defined (_ICCARM) || defined (_ARMCC_VERSION)
+#define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
+#elif defined(_GNUC_)
+   
+#define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
+#endif  
 
- 
+while(1)
+{
 
-## Result :
+	HAL_ADC_Start(&hadc1);
+			HAL_ADC_PollForConversion(&hadc1,100);
+			adcvalue = HAL_ADC_GetValue(&hadc1);
+			HAL_ADC_Stop(&hadc1);
+			HAL_Delay(500);
+			printf("ADC VALUE:%ld\n",adcvalue);
+
+}
+
+PUTCHAR_PROTOTYPE
+{
+
+  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, 0xFFFF);
+
+  return ch;
+}
+
+ ```
+
  
 ## Output  :
+### Board Settings and its connections
+![280790043-1e5f8a5f-e5be-4656-b146-cc4dfc07ee24](https://github.com/Aravindsamy04/Ex.-No.8-CONFIGURING-ANALOG-PORT-TO-INTEFACE-AN-ANALOG-SENSOR-AND-READ-THE-VALUES-USING-SERIAL-PORT/assets/113497037/a972226e-ba10-4d6d-9408-443528ea8bc0)
+ :
+![280790186-1f17f4a5-3141-46ee-82e5-9723460b15ac](https://github.com/Aravindsamy04/Ex.-No.8-CONFIGURING-ANALOG-PORT-TO-INTEFACE-AN-ANALOG-SENSOR-AND-READ-THE-VALUES-USING-SERIAL-PORT/assets/113497037/89e23dc4-f918-435e-a72f-c04afb2613ad)
+![280790227-d92c4624-d8a6-4164-b0c5-dccee5fb008c](https://github.com/Aravindsamy04/Ex.-No.8-CONFIGURING-ANALOG-PORT-TO-INTEFACE-AN-ANALOG-SENSOR-AND-READ-THE-VALUES-USING-SERIAL-PORT/assets/113497037/ebcdef30-a6ab-4b28-af3b-0dbf123aa832)
+### Normal ADC Value :
+![280790587-51903552-1f9b-475a-ae2d-9dc3be8d003f](https://github.com/Aravindsamy04/Ex.-No.8-CONFIGURING-ANALOG-PORT-TO-INTEFACE-AN-ANALOG-SENSOR-AND-READ-THE-VALUES-USING-SERIAL-PORT/assets/113497037/d1520d93-f9a1-478d-bca5-e619eb670642)
+
+### After Light Dipping of soil-moisture-sensor-device in water :
+![280790788-3220c693-a0e5-4396-9386-9ec93a80fa07](https://github.com/Aravindsamy04/Ex.-No.8-CONFIGURING-ANALOG-PORT-TO-INTEFACE-AN-ANALOG-SENSOR-AND-READ-THE-VALUES-USING-SERIAL-PORT/assets/113497037/dad265e2-3604-4432-bb95-faef12e509bb)
+![280790895-8bc1583b-9931-44a0-8294-fd5e8823f13e](https://github.com/Aravindsamy04/Ex.-No.8-CONFIGURING-ANALOG-PORT-TO-INTEFACE-AN-ANALOG-SENSOR-AND-READ-THE-VALUES-USING-SERIAL-PORT/assets/113497037/019163ce-06fa-46a9-bc1c-c2097ee3ea55)
+
+### After Deep Dipping of soil-moisture-sensor-device in water :
+
+![280791176-b532d0a4-cbf9-4395-82c3-c1691107911c](https://github.com/Aravindsamy04/Ex.-No.8-CONFIGURING-ANALOG-PORT-TO-INTEFACE-AN-ANALOG-SENSOR-AND-READ-THE-VALUES-USING-SERIAL-PORT/assets/113497037/b44eabeb-3aef-4868-85ef-56bf5b71661d)
+
+
+![280791212-a258e506-8e2d-40be-af96-45a49ed9fdc3](https://github.com/Aravindsamy04/Ex.-No.8-CONFIGURING-ANALOG-PORT-TO-INTEFACE-AN-ANALOG-SENSOR-AND-READ-THE-VALUES-USING-SERIAL-PORT/assets/113497037/514f9768-8258-4cd0-bfad-0bec1b5d33b5)
 
 
 
 
 
+## Result :
 
+Hence,the configuring analog port to inteface an analog sensor and read the values using serial port runned successfully.
